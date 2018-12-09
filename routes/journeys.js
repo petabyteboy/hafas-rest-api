@@ -51,7 +51,11 @@ const createRoute = (hafas, config) => {
 
 		hafas.journeys(from, to, opt)
 		.then((journeys) => {
-			res.json(journeys)
+			res.json({
+				journeys: journeys,
+				earlierRef: journeys.earlierRef,
+				laterRef: journeys.laterRef
+			})
 			next()
 		})
 		.catch(next)
